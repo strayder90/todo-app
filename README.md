@@ -1,2 +1,3 @@
-# todo-app
-Simple todo app
+Simple Todo list app in react.
+
+Practicing coding , practicing react.
