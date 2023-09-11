@@ -1,4 +1,4 @@
-module.exports = {
+module.export = {
   root: true,
   plugins: ['react', 'react-refresh', 'jsx-a11y'],
   extends: [
@@ -18,6 +18,18 @@ module.exports = {
     'import/namespace': 'warn',
     'import/default': 'warn',
     'import/export': 'warn',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          ['builtin', 'external'],
+          'internal',
+          ['parent', 'sibling'],
+          'index',
+        ],
+        'newlines-between': 'always',
+      },
+    ],
     'padding-line-between-statements': [
       'error',
       {
@@ -35,13 +47,35 @@ module.exports = {
         ],
       },
     ],
-    'react/jsx-uses-react': 'error',
     'react/react-in-jsx-scope': 'error',
     'react-hooks/rules-of-hooks': 'error',
+    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
     'react/jsx-uses-vars': ['error'],
+    'react/jsx-uses-react': 'error',
     'react/jsx-fragments': 'warn',
+    'react/no-danger': 'error',
+    'react/prefer-es6-class': 'error',
     'react/prop-types': 'warn',
     'react/display-name': 'warn',
+    'jsx-quotes': ['warn', 'prefer-single'],
+    'comma-dangle': [
+      'warn',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'only-multiline',
+        functions: 'never',
+      },
+    ],
+    'comma-style': ['warn', 'last'],
+    semi: ['warn', 'always'],
+    'eol-last': ['warn', 'always'],
+    'semi-style': ['warn', 'last'],
+    'no-extra-semi': 'warn',
+    'no-debugger': 'warn',
+    'no-trailing-spaces': 'warn',
+    quotes: ['warn', 'single', { avoidEscape: true }],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
 };
