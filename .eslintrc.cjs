@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   root: true,
   plugins: ['react', 'react-refresh', 'jsx-a11y'],
   extends: [
@@ -10,10 +10,32 @@ module.export = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  env: { browser: true, es2020: true },
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: 'detect' } },
+  env: { browser: true, jasmine: true, es6: true, node: true, commonjs: true },
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@components', './src/components']],
+        extensions: ['.js', '.jsx', '.json', '.graphql'],
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.json'],
+        paths: ['src', 'local_node_modules'],
+      },
+    },
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
+    indent: ['error', 4, { SwitchCase: 1 }],
+    'no-console': 'error',
     'import/named': 'warn',
     'import/namespace': 'warn',
     'import/default': 'warn',

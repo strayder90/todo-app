@@ -1,12 +1,13 @@
 import React from 'react';
+
 import { Header } from '@components/Header.jsx';
 
 function App() {
-  return (
-    <>
-      <Header />
-    </>
-  );
+    return (
+        <>
+            <Header />
+        </>
+    );
 }
 
 export default App;
