@@ -2,6 +2,6 @@ Simple Todo list app in react.
 
 Practicing coding , practicing react.
 
-To run the project: npm start.
+To run the project: npm start
 
-Before pushing: npm run lint --fix.
+Before pushing: npm run lint

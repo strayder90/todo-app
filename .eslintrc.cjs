@@ -10,7 +10,14 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  env: { browser: true, jasmine: true, es6: true, node: true, commonjs: true },
+  env: {
+    browser: true,
+    jasmine: true,
+    es6: true,
+    node: true,
+    commonjs: true,
+    jest: true,
+  },
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
