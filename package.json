@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "test": "jest",
+    "test": "jest --maxWorkers=4",
     "build": "vite build",
     "lint": "eslint --fix --ext .js,.jsx . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
