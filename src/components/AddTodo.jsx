@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CustomForm = () => {
+export const AddTodo = () => {
   const [todo, setTodo] = useState("");
 
   const handleAddTodo = (e) => {
@@ -22,5 +22,3 @@ const CustomForm = () => {
     </>
   );
 };
-
-export default CustomForm;

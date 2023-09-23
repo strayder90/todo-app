@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import CustomForm from "../components/Form.jsx";
-import "../assets/styles/header.css";
+import { AddTodo } from "./AddTodo.jsx";
+import "../assets/styles/todoList.css";
 
-export const Header = ({ text }) => {
+export const TodoList = ({ text }) => {
   const [toggle, setToggle] = useState(false);
 
   const toggleInput = () => {
@@ -27,11 +27,11 @@ export const Header = ({ text }) => {
           </span>
         </h1>
       </header>
-      {toggle && <CustomForm />}
+      {toggle && <AddTodo />}
     </>
   );
 };
 
-Header.propTypes = {
+TodoList.propTypes = {
   text: PropTypes.string,
 };
