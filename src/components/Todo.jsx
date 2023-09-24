@@ -25,7 +25,7 @@ export const Todo = ({ text }) => {
     const result = await fetch("http://localhost:8000/todos");
     const data = await result.json();
 
-    setTodos(data);
+    data ? setTodos(data) : setTodos(data);
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const Todo = ({ text }) => {
     <>
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
-      <TodosList todos={todos} handleDelete={handleDelete} />
+      todos && <TodosList todos={todos} handleDelete={handleDelete} />
     </>
   );
 };
