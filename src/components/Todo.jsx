@@ -36,7 +36,7 @@ export const Todo = ({ text }) => {
     <>
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
-      todos && <TodosList todos={todos} handleDelete={handleDelete} />
+      {todos && <TodosList todos={todos} handleDelete={handleDelete} />}
     </>
   );
 };
