@@ -75,7 +75,7 @@ module.exports = {
     "react/prefer-es6-class": "error",
     "react/prop-types": "warn",
     "react/display-name": "warn",
-    "jsx-quotes": ["warn", "prefer-single"],
+    "jsx-quotes": ["warn", "prefer-double"],
     "comma-dangle": [
       "warn",
       {
