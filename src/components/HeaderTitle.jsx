@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export const HeaderTitle = ({ text, toggleInput }) => {
   return (
-    <header className='wrapper'>
-      <h1 className='title'>
+    <header className="wrapper">
+      <h1 className="title">
         {text}
         <span>
           <i
             onClick={toggleInput}
-            role='button'
+            role="button"
             tabIndex={0}
             onKeyDown={toggleInput}
-            className='pencil alternate small icon'
+            className="pencil alternate small icon"
           ></i>
         </span>
       </h1>

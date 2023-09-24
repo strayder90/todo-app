@@ -1,11 +1,11 @@
 import React from "react";
 
-import { TodoList } from "@components/TodoList.jsx";
+import { Todo } from "@components/Todo.jsx";
 
 function App() {
   return (
     <>
-      <TodoList text={"Todo List"} />
+      <Todo text={"Todo List"} />
     </>
   );
 }

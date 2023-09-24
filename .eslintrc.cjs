@@ -93,7 +93,7 @@ module.exports = {
     "no-extra-semi": "warn",
     "no-debugger": "warn",
     "no-trailing-spaces": "warn",
-    quotes: ["warn", "single", { avoidEscape: true }],
+    quotes: ["warn", "double", { avoidEscape: true }],
   },
   ignorePatterns: ["dist", ".eslintrc.cjs"],
 };
