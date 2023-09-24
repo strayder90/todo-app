@@ -10,6 +10,7 @@ import "@assets/styles/todo.css";
 export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
   const [todos, setTodos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const toggleInput = () => {
     setToggle(!toggle);
@@ -21,11 +22,14 @@ export const Todo = ({ text }) => {
     setTodos(newTodos);
   };
 
-  const fetchedData = async () => {
-    const result = await fetch("http://localhost:8000/todos");
-    const data = await result.json();
+  const fetchedData = () => {
+    setTimeout(async () => {
+      const result = await fetch("http://localhost:8000/todos");
+      const data = await result.json();
 
-    data ? setTodos(data) : setTodos(data);
+      setTodos(data);
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -36,6 +40,7 @@ export const Todo = ({ text }) => {
     <>
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
+      {isLoading && <h3>Loading...</h3>}
       {todos && <TodosList todos={todos} handleDelete={handleDelete} />}
     </>
   );
