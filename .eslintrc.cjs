@@ -28,7 +28,10 @@ module.exports = {
   settings: {
     "import/resolver": {
       alias: {
-        map: [["@components", "./src/components"]],
+        map: [
+          ["@components", "./src/components"],
+          ["@assets", "./src/assets"],
+        ],
         extensions: [".js", ".jsx", ".json", ".graphql"],
       },
       node: {
@@ -41,7 +44,7 @@ module.exports = {
     },
   },
   rules: {
-    indent: ["error", 4, { SwitchCase: 1 }],
+    indent: ["error", 2, { SwitchCase: 1 }],
     "no-console": "error",
     "import/named": "warn",
     "import/namespace": "warn",
