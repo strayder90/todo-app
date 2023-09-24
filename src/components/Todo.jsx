@@ -24,12 +24,17 @@ export const Todo = ({ text }) => {
 
   const fetchedData = () => {
     setTimeout(async () => {
-      const result = await fetch("http://localhost:8000/todos");
-      const data = await result.json();
+      try {
+        const result = await fetch("http://localhost:8000/todos");
+        const data = await result.json();
 
-      setTodos(data);
-      setIsLoading(false);
-    }, 1000);
+        setTodos(data);
+        setIsLoading(false);
+      } catch (error) {
+        alert(error.message);
+        setIsLoading(true);
+      }
+    }, 500);
   };
 
   useEffect(() => {
