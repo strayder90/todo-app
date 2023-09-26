@@ -22,7 +22,7 @@ export const Todo = ({ text }) => {
     setTodos(newTodos);
   };
 
-  const fetchedData = () => {
+  const fetchData = () => {
     setTimeout(async () => {
       try {
         const result = await fetch("http://localhost:8000/todos");
@@ -31,14 +31,14 @@ export const Todo = ({ text }) => {
         setTodos(data);
         setIsLoading(false);
       } catch (error) {
-        alert(error.message);
         setIsLoading(true);
+        throw Error("Failed to fetch data!", { error });
       }
     }, 500);
   };
 
   useEffect(() => {
-    fetchedData();
+    fetchData();
   }, []);
 
   return (
@@ -46,7 +46,7 @@ export const Todo = ({ text }) => {
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
       {isLoading && <h3>Loading...</h3>}
-      {todos && <TodosList todos={todos} handleDelete={handleDelete} />}
+      {todos && !isLoading && <TodosList todos={todos} handleDelete={handleDelete} />}
     </>
   );
 };

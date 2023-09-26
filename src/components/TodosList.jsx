@@ -5,9 +5,11 @@ export const TodosList = ({ todos, handleDelete }) => {
   return (
     <>
       {todos.map((todo) => (
-        <div key={todo.id}>
-          <h3>{todo.name}</h3>
-          <button onClick={() => handleDelete(todo.id)}>Delete</button>
+        <div className="list" key={todo.id}>
+          <h4>{todo.name}</h4>
+          <span className="button-delete" onClick={() => handleDelete(todo.id)}>
+            <i className="trash alternate outline icon"></i>
+          </span>
         </div>
       ))}
     </>

@@ -11,6 +11,18 @@
   justify-content: space-between;
 }
 
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  background: #dbd8e3;
+  border-radius: 5px;
+}
+
+.button-delete {
+  margin-top: 5px;
+}
+
 /* Just to have this color pallete colors for use */
 .first-color {
   background: #dbd8e3;
