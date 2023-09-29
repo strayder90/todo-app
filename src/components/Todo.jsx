@@ -1,52 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { HeaderTitle } from "@components/HeaderTitle.jsx";
+import "@assets/styles/todo.css";
 
 import { AddTodo } from "./AddTodo.jsx";
 import { TodosList } from "./TodosList.jsx";
-import "@assets/styles/todo.css";
+import { useFetch } from "../hooks/useFetch.jsx";
 
 export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
-  const [todos, setTodos] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: todos, isLoading, Error, handleDelete } = useFetch("http://localhost:8000/todos");
 
   const toggleInput = () => {
     setToggle(!toggle);
   };
 
-  const handleDelete = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-
-    setTodos(newTodos);
-  };
-
-  const fetchData = () => {
-    setTimeout(async () => {
-      try {
-        const result = await fetch("http://localhost:8000/todos");
-        const data = await result.json();
-
-        setTodos(data);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(true);
-        const err = `${error.message} - Something went wrong with fetching data.`;
-
-        setError(err);
-      }
-    }, 500);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <>
-      {error && <p>{error}</p>}
+      {Error && <p>{Error}</p>}
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
       {isLoading && <h3>Loading...</h3>}

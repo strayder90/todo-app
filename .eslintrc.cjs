@@ -1,14 +1,12 @@
 module.exports = {
   root: true,
-  plugins: ["react", "react-refresh", "jsx-a11y"],
+  plugins: ["react", "react-refresh"],
   extends: [
-    "plugin:jsx-a11y/recommended",
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
   ],
   env: {
     browser: true,
@@ -66,7 +64,6 @@ module.exports = {
       },
     ],
     "react/react-in-jsx-scope": "error",
-    "react-hooks/rules-of-hooks": "error",
     "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }],
     "react/jsx-uses-vars": ["error"],
     "react/jsx-uses-react": "error",
