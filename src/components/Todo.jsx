@@ -11,6 +11,7 @@ export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const toggleInput = () => {
     setToggle(!toggle);
@@ -32,7 +33,9 @@ export const Todo = ({ text }) => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(true);
-        throw Error("Failed to fetch data!", { error });
+        const err = `${error.message} - Something went wrong with fetching data.`;
+
+        setError(err);
       }
     }, 500);
   };
@@ -43,6 +46,7 @@ export const Todo = ({ text }) => {
 
   return (
     <>
+      {error && <p>{error}</p>}
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
       {isLoading && <h3>Loading...</h3>}
