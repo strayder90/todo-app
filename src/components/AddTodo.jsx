@@ -16,7 +16,7 @@ export const AddTodo = () => {
         <div className="field">
           <input value={todos} onChange={(e) => setTodos(e.target.value)} type="text" placeholder="Add todo" required />
         </div>
-        <button className="ui positive button" type="submit">
+        <button className="ui button button-add" type="submit">
           Save
         </button>
       </form>

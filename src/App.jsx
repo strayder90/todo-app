@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Todo text={"Todo List"} />
         <Routes>
+          <Route exact path="/" element={<Todo text={"Todo List"} />} />
           <Route exact path="/deleted" element={<Deleted />} />
         </Routes>
       </BrowserRouter>

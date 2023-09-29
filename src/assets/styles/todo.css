@@ -21,6 +21,11 @@
 
 .button-delete {
   margin-top: 5px;
+  text-decoration: none;
+  color: rgba(19, 18, 18, 0.87);
+}
+
+.button-add {
 }
 
 /* Just to have this color pallete colors for use */
