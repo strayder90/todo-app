@@ -2,19 +2,21 @@ import React, { useState } from "react";
 
 export const AddTodo = () => {
   const initialTodo = "";
-  const [todos, setTodos] = useState(initialTodo);
+  const [todo, setTodo] = useState(initialTodo);
 
-  const handleAddTodo = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    setTodos(initialTodo);
+    const newTodo = { todo };
+
+    console.log(newTodo);
   };
 
   return (
     <>
-      <form onSubmit={handleAddTodo} className="ui form">
+      <form onSubmit={handleSubmit} className="ui form">
         <div className="field">
-          <input value={todos} onChange={(e) => setTodos(e.target.value)} type="text" placeholder="Add todo" required />
+          <input value={todo} onChange={(e) => setTodo(e.target.value)} type="text" placeholder="Add todo" required />
         </div>
         <button className="ui button button-add" type="submit">
           Save

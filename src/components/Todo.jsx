@@ -11,18 +11,15 @@ import { useFetch } from "../hooks/useFetch.jsx";
 
 export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
-  const { data: todos, isLoading, error, handleDelete } = useFetch("http://localost:8000/todos");
+  const { data: todos, isLoading, error, handleDelete } = useFetch("http://localhost:8000/todos");
 
   const toggleInput = () => {
     setToggle(!toggle);
   };
 
-  if (error) {
-    throw new Error();
-  }
-
   return (
     <>
+      {error && <>{error}</>}
       <HeaderTitle text={text} toggleInput={toggleInput} />
       {toggle && <AddTodo />}
       {isLoading && <h3>Loading...</h3>}

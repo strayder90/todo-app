@@ -6,7 +6,7 @@ export const TodosList = ({ todos, handleDelete }) => {
     <>
       {todos.map((todo) => (
         <div className="list" key={todo.id}>
-          <h4>{todo.name}</h4>
+          <h4>{todo.todo}</h4>
           <span className="button-delete" onClick={() => handleDelete(todo.id)}>
             <i className="trash alternate outline icon"></i>
           </span>

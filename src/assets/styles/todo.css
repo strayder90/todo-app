@@ -25,6 +25,10 @@
   color: rgba(19, 18, 18, 0.87);
 }
 
+.error {
+  margin-top: 20px !important;
+}
+
 .button-add {
 }
 

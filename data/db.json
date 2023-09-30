@@ -2,19 +2,19 @@
   "todos": [
     {
       "id": 1,
-      "name": "Hit the gym."
+      "todo": "Hit the gym."
     },
     {
       "id": 2,
-      "name": "Buy grocceries."
+      "todo": "Buy grocceries."
     },
     {
       "id": 3,
-      "name": "Play with kid."
+      "todo": "Play with kid."
     },
     {
       "id": 4,
-      "name": "Have fun."
+      "todo": "Have fun."
     }
   ]
 }

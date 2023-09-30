@@ -22,7 +22,15 @@ export const useFetch = (url) => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(true);
-        setError(error.message);
+        const err = (
+          <div className="error ui negative medium message">
+            <i className="close icon"></i>
+            <div name="header">We're sorry something went wrong.</div>
+            <p>{error.message}</p>
+          </div>
+        );
+
+        setError(err);
       }
     }, 500);
   };
