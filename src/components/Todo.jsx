@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import "@assets/styles/todo.css";
 
 import { HeaderTitle } from "@components/HeaderTitle.jsx";
+
 import { AddTodo } from "./AddTodo.jsx";
 import { TodosList } from "./TodosList.jsx";
-
 import { useFetch } from "../hooks/useFetch.jsx";
 
 export const Todo = ({ text }) => {
@@ -20,9 +20,9 @@ export const Todo = ({ text }) => {
   return (
     <>
       {error && <>{error}</>}
-      <HeaderTitle text={text} toggleInput={toggleInput} />
-      {toggle && <AddTodo />}
-      {isLoading && <h3>Loading...</h3>}
+      {!isLoading && <HeaderTitle text={text} toggleInput={toggleInput} />}
+      {toggle && !error && <AddTodo />}
+      {isLoading && !error && <h3>Loading...</h3>}
       {todos && !isLoading && <TodosList todos={todos} />}
     </>
   );

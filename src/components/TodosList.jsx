@@ -9,7 +9,7 @@ export const TodosList = ({ todos }) => {
           fetch(`http://localhost:8000/todos/${todo.id}`, {
             method: "DELETE",
           }).then(() => {
-            console.log("Successfully deleted todo.");
+            alert("Successfully deleted todo.");
           });
         };
 

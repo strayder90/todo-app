@@ -21,7 +21,7 @@ export const AddTodo = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTodo),
     }).then(() => {
-      console.log("New todo added.");
+      alert("New todo added.");
       setIsLoading(false);
       navigate("/");
     });

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -7,12 +8,12 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    console.log(error, info);
+    alert(error, info);
   }
 
   render() {
@@ -20,7 +21,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="ui negative large message">
           <i className="close icon"></i>
-          <div Name="header">We're sorry something went wrong</div>
+          <div name="header">We&apos;re sorry something went wrong</div>
           <p>{this.props.fallback}</p>
         </div>
       );
@@ -29,5 +30,10 @@ class ErrorBoundary extends React.Component {
     }
   }
 }
+
+ErrorBoundary.propTypes = {
+  fallback: PropTypes.string,
+  children: PropTypes.object,
+};
 
 export default ErrorBoundary;
