@@ -6,12 +6,6 @@ export const useFetch = (url) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const handleDelete = (id) => {
-    const newData = data.filter((data) => data.id !== id);
-
-    setData(newData);
-  };
-
   const fetchData = () => {
     setTimeout(async () => {
       try {
@@ -35,11 +29,9 @@ export const useFetch = (url) => {
     }, 500);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [url]);
+  fetchData();
 
-  return { data, isLoading, error, handleDelete };
+  return { data, isLoading, error };
 };
 
 useFetch.propTypes = {

@@ -25,6 +25,8 @@ export const AddTodo = () => {
       setIsLoading(false);
       navigate("/");
     });
+
+    setTodo("");
   };
 
   return (

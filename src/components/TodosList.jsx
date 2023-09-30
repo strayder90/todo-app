@@ -1,22 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const TodosList = ({ todos, handleDelete }) => {
+export const TodosList = ({ todos }) => {
   return (
     <>
-      {todos.map((todo) => (
-        <div className="list" key={todo.id}>
-          <h4>{todo.todo}</h4>
-          <span className="button-delete" onClick={() => handleDelete(todo.id)}>
-            <i className="trash alternate outline icon"></i>
-          </span>
-        </div>
-      ))}
+      {todos.map((todo) => {
+        const handleDelete = () => {
+          fetch(`http://localhost:8000/todos/${todo.id}`, {
+            method: "DELETE",
+          }).then(() => {
+            console.log("Successfully deleted todo.");
+          });
+        };
+
+        return (
+          <div className="list" key={todo.id}>
+            <h4>{todo.todo}</h4>
+            <span className="button-delete">
+              <i className="trash alternate outline icon" onClick={handleDelete}></i>
+            </span>
+          </div>
+        );
+      })}
     </>
   );
 };
 
 TodosList.propTypes = {
   todos: PropTypes.array,
-  handleDelete: PropTypes.func,
 };

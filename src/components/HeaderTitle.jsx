@@ -16,6 +16,7 @@ export const HeaderTitle = ({ text, toggleInput }) => {
           )}
         </span>
       </h1>
+      <h4>Klikni na olovku da dodas nov todo :)</h4>
     </header>
   );
 };
