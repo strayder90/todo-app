@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [Error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleDelete = (id) => {
     const newData = data.filter((data) => data.id !== id);
@@ -22,9 +22,7 @@ export const useFetch = (url) => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(true);
-        const err = `${error.message} - Something went wrong with fetching data.`;
-
-        setError(err);
+        setError(error.message);
       }
     }, 500);
   };
@@ -33,7 +31,7 @@ export const useFetch = (url) => {
     fetchData();
   }, [url]);
 
-  return { data, isLoading, Error, handleDelete };
+  return { data, isLoading, error, handleDelete };
 };
 
 useFetch.propTypes = {
