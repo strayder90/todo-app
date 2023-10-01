@@ -30,4 +30,5 @@ export default {
       "@assets": path.resolve(__dirname, "./src/assets"),
     },
   },
+  watch: true,
 };

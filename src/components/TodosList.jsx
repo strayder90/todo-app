@@ -15,7 +15,7 @@ export const TodosList = ({ todos }) => {
 
         return (
           <div className="list" key={todo.id}>
-            <h4>{todo.todo}</h4>
+            <h4>{todo.name}</h4>
             <span className="button-delete">
               <i className="trash alternate outline icon" onClick={handleDelete}></i>
             </span>

@@ -11,7 +11,7 @@ import { useFetch } from "../hooks/useFetch.jsx";
 
 export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
-  const { data: todos, isLoading, error } = useFetch("http://localhost:8000/todos");
+  const { data: todos, isLoading, error } = useFetch();
 
   const toggleInput = () => {
     setToggle(!toggle);

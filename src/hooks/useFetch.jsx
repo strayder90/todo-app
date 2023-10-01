@@ -1,18 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-export const useFetch = (url) => {
+const firebaseConfig = {
+  apiKey: "AIzaSyDUZIlb_mfF0xDETwhvOhhod3f3-zrC2B0",
+  authDomain: "todo-app-109fc.firebaseapp.com",
+  projectId: "todo-app-109fc",
+  storageBucket: "todo-app-109fc.appspot.com",
+  messagingSenderId: "451482936577",
+  appId: "1:451482936577:web:d6d1e56c710f72a8592700",
+};
+
+initializeApp(firebaseConfig);
+
+export const useFetch = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchData = () => {
-    setTimeout(async () => {
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const result = await fetch(url);
-        const data = await result.json();
+        const db = getFirestore();
+        const collectionReference = collection(db, "todos");
+        const todosData = await getDocs(collectionReference);
 
-        setData(data);
+        let todos = [];
+
+        todosData.docs.map((doc) => {
+          todos.push({ id: doc.id, ...doc.data() });
+        });
+
+        console.log(todos);
+
+        setData(todos);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(true);
@@ -26,10 +48,10 @@ export const useFetch = (url) => {
 
         setError(err);
       }
-    }, 500);
-  };
+    };
 
-  fetchData();
+    fetchData();
+  }, []);
 
   return { data, isLoading, error };
 };
