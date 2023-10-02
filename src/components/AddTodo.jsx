@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { collectionReference } from "../hooks/useFetch";
 
 // Not needed to use useNavigate because there are no multiple pages here. But usefull to improve app.
 
-export const AddTodo = () => {
+export const AddTodo = ({ addDoc }) => {
   const initialTodo = "";
   const [todo, setTodo] = useState(initialTodo);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  let idCounter = 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newTodo = { todo };
+    const newTodo = { id: idCounter++, name: todo };
 
     setIsLoading(true);
 
-    fetch("http://localhost:8000/todos", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTodo),
-    }).then(() => {
-      alert("New todo added.");
-      setIsLoading(false);
-      navigate("/");
-    });
-
-    setTodo("");
+    addDoc(collectionReference, newTodo)
+      .then((res) => {
+        setIsLoading(false);
+        setTodo("");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

@@ -3,7 +3,7 @@ const __dirname = path.resolve();
 
 export default {
   mode: "development",
-  entry: "./src/main.jsx",
+  entry: "./src/App.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",

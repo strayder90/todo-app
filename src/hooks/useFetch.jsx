@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,6 +14,10 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
+const db = getFirestore();
+export const collectionReference = collection(db, "todos");
+const todosData = await getDocs(collectionReference);
+
 export const useFetch = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,10 +26,6 @@ export const useFetch = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const db = getFirestore();
-        const collectionReference = collection(db, "todos");
-        const todosData = await getDocs(collectionReference);
-
         let todos = [];
 
         todosData.docs.map((doc) => {
@@ -51,7 +51,7 @@ export const useFetch = () => {
     fetchData();
   }, []);
 
-  return { data, isLoading, error };
+  return { data, isLoading, error, addDoc };
 };
 
 useFetch.propTypes = {

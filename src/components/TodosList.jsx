@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const TodosList = ({ todos }) => {
+export const TodosList = ({ todos, addDoc }) => {
   return (
     <>
       {todos.map((todo) => {

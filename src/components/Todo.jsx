@@ -11,7 +11,7 @@ import { useFetch } from "../hooks/useFetch.jsx";
 
 export const Todo = ({ text }) => {
   const [toggle, setToggle] = useState(false);
-  const { data: todos, isLoading, error } = useFetch();
+  const { data: todos, isLoading, error, addDoc } = useFetch();
 
   const toggleInput = () => {
     setToggle(!toggle);
@@ -21,7 +21,7 @@ export const Todo = ({ text }) => {
     <>
       {error && <>{error}</>}
       {!isLoading && <HeaderTitle text={text} toggleInput={toggleInput} />}
-      {toggle && !error && <AddTodo />}
+      {toggle && !error && <AddTodo addDoc={addDoc} />}
       {isLoading && !error && <h3>Loading...</h3>}
       {todos && !isLoading && <TodosList todos={todos} />}
     </>
