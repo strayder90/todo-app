@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDUZIlb_mfF0xDETwhvOhhod3f3-zrC2B0",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "todo-app-109fc.firebaseapp.com",
   projectId: "todo-app-109fc",
   storageBucket: "todo-app-109fc.appspot.com",
@@ -31,8 +31,6 @@ export const useFetch = () => {
         todosData.docs.map((doc) => {
           todos.push({ id: doc.id, ...doc.data() });
         });
-
-        console.log(todos);
 
         setData(todos);
         setIsLoading(false);
