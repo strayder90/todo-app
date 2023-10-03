@@ -22,7 +22,7 @@ export const AddTodo = ({ addDoc }) => {
       .then((res) => {
         setIsLoading(false);
         setTodo("");
-        navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
